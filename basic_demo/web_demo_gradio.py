@@ -38,7 +38,16 @@ from transformers import (
 ModelType = Union[PreTrainedModel, PeftModelForCausalLM]
 TokenizerType = Union[PreTrainedTokenizer, PreTrainedTokenizerFast]
 
-MODEL_PATH = os.environ.get('MODEL_PATH', 'THUDM/chatglm3-6b')
+# 获取当前脚本的绝对路径
+script_path = os.path.abspath(__file__)
+# 获取当前脚本所在的目录
+script_dir = os.path.dirname(script_path)
+# 获取脚本所在目录的父目录
+parent_dir = os.path.dirname(script_dir)
+# 构造与微调后模型目录的路径
+model_dir = os.path.join(parent_dir, 'finetune_demo/output/checkpoint-2000')
+# MODEL_PATH = os.environ.get('MODEL_PATH', 'THUDM/chatglm3-6b')
+MODEL_PATH = model_dir
 TOKENIZER_PATH = os.environ.get("TOKENIZER_PATH", MODEL_PATH)
 
 
